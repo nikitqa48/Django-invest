@@ -1,0 +1,75 @@
+{% load static  connect_form%}
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8">   
+                <link rel="stylesheet" type="text/css" href='/static/slick-1.8.1/slick/slick.css'>
+                <link rel="stylesheet" type="text/css" href="/static/slick-1.8.1/slick/slick-theme.css"/> 
+                <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+                <link rel="stylesheet" type="text/css" href="{% static 'userRoom/base.css' %}">  
+                <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+                <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+            </head>
+<body>
+    {% block content %}
+  
+    {% endblock %}
+    <form action="{% url 'connect' %}" class="form_connect" method="POST" id="egor">
+        <div class="all">
+        <h2 class="svyaz">Связаться с нами</h2>
+        
+            <svg xmlns="http://www.w3.org/2000/svg" fill = "white" id = 'closebutton'  class = "svgclose" width="2vw" height="2.5vh" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+     
+        <div class="wrapp2">
+            <div class="wrapp1">
+                    <p>Имя</p>
+                    {{var.first_name}}
+            </div>
+                <div class="wrapp1">
+        <label class="phone" for="id_phone">Телефон</label>
+        {{var.phone}}
+    </div>
+
+    </div>
+    <div class="wrapp2">
+        <div class="wrapp1">
+            <p>Фамилия</p>
+            {{var.second_name}}
+    </div>
+    <div class="wrapp1">
+        <p>Почта</p>
+        {{var.email}}
+    </div>
+    </div>
+    <div class="wrapp2">
+        <div class="wrapp1">
+    <label class="otch" for="id_last_name">Отчество</label>
+
+    {{var.last_name}}
+    </div>
+    <div class="wrapp1">
+        <p>Организация</p>
+        {{var.organisation}}
+    </div> 
+    </div>
+  <div class="wrapp2">
+      <div class="wrapp1">
+        <div class="capcha">
+                {{var.captcha}}
+                {{var.captcha.errors}}
+                <button id='refresh' class="refresh"><img src="/static/userRoom/img/refresh.svg"></button>
+            </div>
+        </div>
+            {% csrf_token %}
+  
+    <input type="submit" value="Связаться" class="submit" id = 'btn'>
+</div>
+    </div>
+    </form>
+
+<button class="fixed_button" id = "toggle">?</button> 
+<script type="text/javascript" src="/static/slick-1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="/static/userRoom/js.js"></script>
+</body>
+</html>
+
